@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo Cliente</title>
+</head>
+<body>
+  <h2>Registrar Nuevo Cliente</h2>
+  <form id="formularioCliente">
+    <label>Nombre:</label><br>
+    <input type="text" id="nombre" required><br><br>
+
+    <label>Apellido:</label><br>
+    <input type="text" id="apellido" required><br><br>
+
+    <label>Correo electrónico:</label><br>
+    <input type="email" id="correo" required><br><br>
+
+    <label>Teléfono:</label><br>
+    <input type="tel" id="telefono" required><br><br>
+
+    <label>País:</label><br>
+    <select id="pais" required>
+      <option value="">Seleccione un país</option>
+    </select>
+
+
+    <button type="submit">Guardar Cliente</button>
+  </form>
+
+  <p id="mensaje" style="color: green;"></p>
+  <p id="error" style="color: red;"></p>
+
+  <br>
+  <a href="clientes.html">← Volver al listado</a>
+
+  <script src="js/cliente_nuevo.js"></script>
+</body>
+</html>

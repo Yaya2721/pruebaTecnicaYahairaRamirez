@@ -3,11 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <title>Clientes</title>
+    <link rel="stylesheet" href="estilos.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
+    <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- Usa tu kit FontAwesome -->
+
 </head>
 <body>
-  <form id="loginForm">
+  <div class="contenedor">
+    <a href="cliente_nuevo.html" class="boton-nuevo">+ Nuevo Cliente</a>
+
+  <!-- <form id="loginForm">
+    <a class="boton-nuevo" href="cliente_nuevo.html">➕ Nuevo Cliente</a> -->
+
     <h2>Listado de Clientes</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
+    
+    <!-- //Filtros: se que me pidieron solo por dos pero le coloque asi el de que pudieran elegir  -->
+    <div class="filtro-contenedor">
+      <select id="filtroCampo">
+        <option value="nombre">Nombre</option>
+        <option value="correo">Correo</option>
+        <option value="pais">País</option>
+      </select>
+      <input type="text" id="filtroValor" placeholder="Buscar...">
+    </div>
+
+    <!-- <table border="1" cellpadding="8" cellspacing="0"> -->
+      <table>
         <thead>
             <tr>
             <th>ID</th>
@@ -17,13 +38,13 @@
             <th>Teléfono</th>
             <th>País</th>
             <th>Fecha Registro</th>
+            <th>Acciones</th>
             </tr>
         </thead>
-        <tbody id="clienteTablaCuerpo">
-            
-        </tbody>
+        <tbody id="clienteTablaCuerpo"></tbody>
     </table>
-    
+     <p id="error" class="error"></p>
+  </div>
   <script src="js/clientes.js"></script>
 </body>
 </html>

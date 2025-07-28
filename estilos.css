@@ -1,0 +1,82 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FAFAFA;
+  color: #1E1E2E;
+}
+
+h2 {
+  color: #5C5CFF;
+}
+
+.boton-nuevo {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #B294FF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.boton-nuevo:hover {
+  background-color: #9e7cff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #F0F0FF;
+  color: #333;
+}
+
+.btn-accion {
+  background-color: #FFD6E5;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 7px;
+  margin: 0 2px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-accion:hover {
+  transform: scale(1.1);
+  background-color: #FF9EB8;
+}
+
+.icono {
+  font-size: 1rem;
+}
+
+.btn-editar, .btn-eliminar {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 2px;
+}
+
+.btn-editar {
+  background-color: #c792ea;
+  color: white;
+}
+
+.btn-eliminar {
+  background-color: #53ffee;
+  color: white;
+}

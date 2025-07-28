@@ -24,12 +24,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             <td>${cliente.apellido}</td>
             <td>${cliente.email}</td>
             <td>${cliente.telefono}</td>
-            <td>${cliente.pais_id}</td>
-            <td>${cliente.fecha_registro}</td>            
+            <td>${cliente.pais_nombre}</td>
+            <td>${cliente.fecha_registro}</td>  
+            <td>
+                <button class="btn-editar"><i class="fas fa-pen"></i></button>
+                <button class="btn-eliminar"><i class="fas fa-trash"></i></button>
+            </td>          
             `;
             clienteTablaCuerpo.appendChild(fila);
         });
     } catch (error) {
-        alert('Error al listar los clientes');
+        document.getElementById('error').textContent = 'Error al cargar los clientes.';
     }
 });
