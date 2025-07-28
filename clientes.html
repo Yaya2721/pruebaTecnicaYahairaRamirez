@@ -5,7 +5,8 @@
   <title>Clientes</title>
     <link rel="stylesheet" href="estilos.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
-    <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- Usa tu kit FontAwesome -->
+    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> Usa tu kit FontAwesome -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
 
 </head>
 <body>
@@ -17,15 +18,13 @@
 
     <h2>Listado de Clientes</h2>
     
-    <!-- //Filtros: se que me pidieron solo por dos pero le coloque asi el de que pudieran elegir  -->
-    <div class="filtro-contenedor">
-      <select id="filtroCampo">
-        <option value="nombre">Nombre</option>
-        <option value="correo">Correo</option>
-        <option value="pais">País</option>
-      </select>
-      <input type="text" id="filtroValor" placeholder="Buscar...">
-    </div>
+    
+   <select id="filtroCampo">
+  <option value="nombre">Nombre</option>
+  <option value="email">Email</option>
+</select>
+<input type="text" id="busqueda" placeholder="Buscar cliente...">
+
 
     <!-- <table border="1" cellpadding="8" cellspacing="0"> -->
       <table>
@@ -41,7 +40,19 @@
             <th>Acciones</th>
             </tr>
         </thead>
-        <tbody id="clienteTablaCuerpo"></tbody>
+        <tbody id="clienteTablaCuerpo">
+
+          <td>
+            <button class="btn-editar" onclick="editarCliente(${cliente.id})">
+              <i class="fas fa-pen"></i>
+            </button>
+            <button class="btn-eliminar" onclick="eliminarCliente(${cliente.id})">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+
+
+        </tbody>
     </table>
      <p id="error" class="error"></p>
   </div>

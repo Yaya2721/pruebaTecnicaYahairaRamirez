@@ -86,3 +86,53 @@ if ($_GET['accion'] === 'paises') {
   echo json_encode($paises);
   exit;
 }
+
+
+// Obtener cliente por ID
+if ($_GET['accion'] === 'obtenerCliente') {
+  $id = $_GET['id'] ?? null;
+  if ($id) {
+    $stmt = $conexion->prepare("SELECT * FROM clientes WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    echo json_encode($resultado->fetch_assoc());
+  }
+  exit;
+}
+
+// Actualizar cliente
+if ($_GET['accion'] === 'actualizarCliente') {
+  $data = json_decode(file_get_contents("php://input"), true);
+
+  $id = $data['id'];
+  $nombre = $data['nombre'];
+  $apellido = $data['apellido'];
+  $correo = $data['email']; // Usa 'email' porque así lo guardaste
+  $telefono = $data['telefono'];
+  $pais = $data['pais'];
+
+  $stmt = $conexion->prepare("UPDATE clientes SET nombre=?, apellido=?, email=?, telefono=?, pais_id=? WHERE id=?");
+  $stmt->bind_param("sssssi", $nombre, $apellido, $correo, $telefono, $pais, $id);
+
+  if ($stmt->execute()) {
+    echo json_encode(['success' => true]);
+  } else {
+    echo json_encode(['success' => false, 'error' => $stmt->error]);
+  }
+  exit;
+}
+
+
+// Eliminar cliente
+if ($_GET['accion'] === 'eliminarCliente') {
+  $data = json_decode(file_get_contents("php://input"), true);
+  $id = $data['id'] ?? null;
+  if ($id) {
+    $stmt = $conexion->prepare("DELETE FROM clientes WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $ok = $stmt->execute();
+    echo json_encode(['success' => $ok]);
+  }
+  exit;
+}

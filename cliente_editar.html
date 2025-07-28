@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Editar Cliente</h2>
+    <form id="formEditarCliente">
+      <input type="hidden" id="clienteId">
+      <label>Nombre:</label><input type="text" id="nombre"><br>
+      <label>Apellido:</label><input type="text" id="apellido"><br>
+      <label>Email:</label><input type="email" id="correo"><br>
+      <label>Teléfono:</label><input type="tel" id="telefono"><br>
+      <label>País:</label>
+      <select id="pais"></select><br><br>
+      <button type="button" id="btnActualizar">Actualizar Cambios</button>
+    </form>
+    <p id="mensaje" style="color: green;"></p>
+    <p id="error" style="color: red;"></p>
+    <br><a href="clientes.html">← Volver al listado</a>
+  </div>
+  <script src="js/cliente_editar.js"></script>
+</body>
+</html>
