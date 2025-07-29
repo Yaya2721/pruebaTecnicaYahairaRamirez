@@ -30,14 +30,62 @@ if ($_GET['accion'] === 'login'){
     }
 
 //Listar Clientes
-if ($_GET['accion'] === 'clientes') {
-  $sql = "SELECT a.*, b.nombre AS pais_nombre
-          FROM clientes as a
-          JOIN paises as b ON a.pais_id = b.id
-          ORDER BY a.id DESC;
-         ";
-  $resultado = $conexion->query($sql);
+// if ($_GET['accion'] === 'clientes') {
 
+//   //para el filtro 
+//   $campo = $_GET['campo'] ?? null;
+//   $valor = $_GET['valor'] ?? null;
+
+//   $sql = "SELECT A.*, b.nombre AS pais_nombre
+//           FROM clientes AS A
+//           JOIN paises AS B ON A.pais_id = B.id
+//           ORDER BY A.id DESC;
+//          ";
+//   $resultado = $conexion->query($sql);
+
+//   $clientes = [];
+
+//   while ($fila = $resultado->fetch_assoc()) {
+//     $clientes[] = $fila;
+//   }
+
+//   echo json_encode($clientes);
+//   exit;
+// }
+
+if ($_GET['accion'] === 'clientes') {
+  $valor = $_GET['valor'] ?? '';
+  $campo = $_GET['campo'] ?? '';
+
+  $sql = "SELECT a.*, b.nombre AS pais_nombre
+          FROM clientes AS a
+          JOIN paises AS b ON a.pais_id = b.id";
+
+  if (!empty($valor)) {
+    $valor = $conexion->real_escape_string($valor);
+
+    if ($campo === 'todos') {
+      $sql .= " WHERE a.nombre LIKE '%$valor%'
+                OR a.apellido LIKE '%$valor%'
+                OR a.email LIKE '%$valor%'
+                OR a.telefono LIKE '%$valor%'
+                OR b.nombre LIKE '%$valor%'";
+    } else {
+      // Seguridad: solo permite campos válidos
+      $campos_validos = ['nombre', 'apellido', 'email', 'telefono', 'pais', 'fecha_registro'];
+      if (in_array($campo, $campos_validos)) {
+        if ($campo === 'pais') {
+          $sql .= " WHERE b.nombre LIKE '%$valor%'";
+        } else {
+          $sql .= " WHERE a.$campo LIKE '%$valor%'";
+        }
+      }
+    }
+  }
+
+  $sql .= " ORDER BY a.id DESC";
+
+  $resultado = $conexion->query($sql);
   $clientes = [];
 
   while ($fila = $resultado->fetch_assoc()) {
@@ -47,6 +95,7 @@ if ($_GET['accion'] === 'clientes') {
   echo json_encode($clientes);
   exit;
 }
+
 
 //Crear Cliente
 if ($_GET['accion'] === 'crearCliente') {

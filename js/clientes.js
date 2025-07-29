@@ -18,7 +18,7 @@ async function cargarClientes() {
     const campo = document.getElementById('filtroCampo').value;
     const valor = document.getElementById('busqueda').value.trim();
     const url = valor
-      ? `backend/api.php?accion=clientes&campo=${campo}&valor=${encodeURIComponent(valor)}`
+      ? `backend/api.php?accion=clientes&valor=${encodeURIComponent(valor)}&campo=${campo}`
       : `backend/api.php?accion=clientes`;
 
     const respuesta = await fetch(url);
